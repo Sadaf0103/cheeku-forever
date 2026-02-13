@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifetime Contract</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #ff4d6d;
+    font-family: monospace;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    z-index: 2;
+}
+
+.buttons {
+    position: relative;
+    z-index: 2;
+}
+
+button {
+    background-color: #ff4d6d;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#noBtn {
+    position: relative;
+}
+
+/* Falling hearts */
+.heart {
+    position: absolute;
+    top: -50px;
+    font-size: 20px;
+    color: #ff4d6d;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>
+Will you sign this LIFETIME contract<br>
+with me, Cheeku?
+</h1>
+
+<div class="buttons">
+    <button id="yesBtn">YES 😈</button>
+    <button id="noBtn">No 😇</button>
+</div>
+
+<script>
+
+// Moving NO button
+const noBtn = document.getElementById("noBtn");
+
+function moveButton() {
+    const x = Math.floor(Math.random() * 300) - 150;
+    const y = Math.floor(Math.random() * 200) - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    moveButton();
+});
+noBtn.addEventListener("touchstart", moveButton);
+
+
+// YES button dramatic message sequence
+const yesBtn = document.getElementById("yesBtn");
+
+const messages = [
+    
+    "You just signed your destiny.",
+    "Contract accepted. No refunds.",
+    "This is my favorite 'Yes'.",
+    "I love you..."
+];
+
+let index = 0;
+
+yesBtn.addEventListener("click", function() {
+    alert(messages[index]);
+    index++;
+    if (index >= messages.length) {
+        index = 0;
+    }
+});
+
+
+// Falling hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>

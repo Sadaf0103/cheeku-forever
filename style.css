@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: #ff4d6d;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+}
+
+.container {
+    padding-top: 120px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    background: #ff4d6d;
+    color: black;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1e4d;
+}
+
+#no {
+    position: absolute;
+}
